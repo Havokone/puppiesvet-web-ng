@@ -33,6 +33,7 @@ import { ListOrdenComponent } from './orden/list-orden/list-orden.component';
 import { CreateOrdenComponent } from './orden/create-orden/create-orden.component';
 import { DetailOrdenComponent } from './orden/detail-orden/detail-orden.component';
 import { EditOrdenComponent } from './orden/edit-orden/edit-orden.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { EditOrdenComponent } from './orden/edit-orden/edit-orden.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

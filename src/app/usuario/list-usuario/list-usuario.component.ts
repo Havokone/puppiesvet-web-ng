@@ -12,7 +12,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ListUsuarioComponent implements OnInit,AfterViewInit {
 
-  usuario: Usuario
+  usuario: Usuario = new Usuario();
   displayedColumns = ["idUsuario","nombreUsuario","dniUsuario","emailUsuario","celularUsuario","direccionUsuario","rol","estado","opciones"]
   dataSource = new MatTableDataSource<Usuario>();
 

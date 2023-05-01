@@ -52,6 +52,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -111,6 +112,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatInputModule,
     MatPaginatorModule,
+    MatSelectModule,
 
     FormsModule,
     ReactiveFormsModule,

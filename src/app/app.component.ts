@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {FormControl} from '@angular/forms';
+import {MatDrawerMode} from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'puppiesvet-web-ng';
+  title = 'Puppies-Vet';
+  mode = new FormControl('push' as MatDrawerMode);
 }

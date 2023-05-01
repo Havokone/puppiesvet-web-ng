@@ -18,7 +18,14 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
+    "strictPropertyInitialization": false,
     "useDefineForClassFields": false,
+
+    "paths": {
+      "@service/*": ["src/app/service/*"],
+      "@models/*": ["src/app/model/*"]
+    },
+
     "lib": [
       "ES2022",
       "dom"

@@ -33,40 +33,88 @@ import { ListOrdenComponent } from './orden/list-orden/list-orden.component';
 import { CreateOrdenComponent } from './orden/create-orden/create-orden.component';
 import { DetailOrdenComponent } from './orden/detail-orden/detail-orden.component';
 import { EditOrdenComponent } from './orden/edit-orden/edit-orden.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HomeComponent } from './home/home.component';
+import { IndexComponent } from './index/index.component';
+
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
+
     ListOrdenComponent,
     CreateOrdenComponent,
     DetailOrdenComponent,
     EditOrdenComponent,
+
     ListServicioComponent,
     CreateServicioComponent,
     DetailServicioComponent,
     EditServicioComponent,
+
     ListMascotaComponent,
     CreateMascotaComponent,
     DetailMascotaComponent,
     EditMascotaComponent,
+
     ListRazaMascotaComponent,
     CreateRazaMascotaComponent,
     DetailRazaMascotaComponent,
     EditRazaMascotaComponent,
+
     ListEspecieMascotaComponent,
     CreateEspecieMascotaComponent,
     DetailEspecieMascotaComponent,
     EditEspecieMascotaComponent,
+
     ListUsuarioComponent,
     CreateUsuarioComponent,
     DetailUsuarioComponent,
-    EditUsuarioComponent
+    EditUsuarioComponent,
+
+    PageNotFoundComponent,
+    HomeComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatNativeDateModule,
+    MatListModule,
+    MatTableModule,
+    MatSortModule,
+    MatInputModule,
+    MatPaginatorModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

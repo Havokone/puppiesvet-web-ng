@@ -28,8 +28,6 @@ export class EditUsuarioComponent implements OnInit {
       this.usuario = data;
       this.setValuesInit();
     });
-
-
   }
 
   ngOnInit(): void {
@@ -53,11 +51,10 @@ export class EditUsuarioComponent implements OnInit {
       password: [this.usuario.password,[Validators.required]],
       rol: [this.usuario.rol],
       estado: [{value:this.usuario.estado,disabled:false}]
-      })
+    })
   }
 
   actualizar(){
-
     this.usuario.dniUsuario = this.usuarioForm.value["dniUsuario"]
     this.usuario.nombreUsuario = this.usuarioForm.value["nombreUsuario"]
     this.usuario.emailUsuario = this.usuarioForm.value["emailUsuario"]
@@ -66,7 +63,6 @@ export class EditUsuarioComponent implements OnInit {
     this.usuario.password = this.usuarioForm.value["password"]
     this.usuario.rol = this.usuarioForm.value["rol"]
     this.usuario.estado = this.usuarioForm.value["estado"]
-    console.log(this.usuario)
     this.usuarioService.updateUsuario(this.usuario.idUsuario,this.usuario).subscribe(data => {this.router.navigate(['usuario/listar'])})
   }
 

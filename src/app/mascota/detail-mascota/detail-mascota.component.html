@@ -1,1 +1,49 @@
-<p>detail-mascota works!</p>
+<div class="card w-25 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Detalle</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <mat-card-subtitle>ID: {{mascota.idMascota}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Nombre: {{mascota.nombreMascota}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Peso: {{mascota.pesoMascota}} gr</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Tamaño: {{mascota.tamanoMascota}} cm (alto)</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Fecha de nacimiento: {{mascota.fechaNacimientoMascota | date:"dd-MM-YYYY"}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Sexo: {{mascota.sexoMascota=="M"?"Macho":"Hembra"}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Especie: {{mascota.razaMascota!=undefined ? ( mascota.razaMascota.especieMascota!=undefined ? mascota.razaMascota.especieMascota.nombreEspecieMascota : "") : ""}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Raza: {{mascota.razaMascota!=undefined ? mascota.razaMascota.nombreRazaMascota : ""}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Estado: {{mascota.estado ? "Activo" : "Inactivo"}}</mat-card-subtitle>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" routerLink="/mascota/listar">Volver</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

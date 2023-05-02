@@ -1,1 +1,74 @@
-<p>create-raza-mascota works!</p>
+<div class="card w-75 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Registro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="guardar()" [formGroup]="razaForm">
+        <div class="row col-12">
+          <div class="col-2">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Nombre</mat-label>
+              <input type="text" matInput formControlName="nombreRazaMascota" maxlength="40"
+                     placeholder="Ingrese el nombre" >
+              <mat-error *ngIf="handleError('nombreRazaMascota', 'required')">
+                Nombres de la raza es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-5">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Descripción</mat-label>
+              <textarea type="text" matInput formControlName="descripcionRazaMascota" maxlength="200"
+                     placeholder="Ingrese la descripción" ></textarea>
+              <mat-error *ngIf="handleError('descripcionRazaMascota', 'required')">
+                Descripción de la raza es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-5">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Cuidados</mat-label>
+              <textarea type="text" matInput formControlName="cuidadosRazaMascota" maxlength="200"
+                     placeholder="Ingrese los cuidados recomendados" ></textarea>
+              <mat-error *ngIf="handleError('cuidadosRazaMascota', 'required')">
+                Cuidados de la raza es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-4">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Especie</mat-label>
+              <mat-select formControlName="especieMascota">
+                <mat-option [value]="">
+                  --Seleccione--
+                </mat-option>
+                <mat-option *ngFor="let especie of especies" [value]="especie.idEspecieMascota">
+                  {{especie.nombreEspecieMascota}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="handleError('especieMascota', 'required')">
+                Especie es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-4">
+            <mat-slide-toggle formControlName="estado" style="padding: 20px 0px 20px 0px;">Activo</mat-slide-toggle>
+          </div>
+        </div>
+        <div class="row col-12">
+          <div class="col-1">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!razaForm.valid">Guardar</button>
+          </div>
+          <div class="col-1">
+            <button mat-raised-button color="warn" routerLink="/raza/listar">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

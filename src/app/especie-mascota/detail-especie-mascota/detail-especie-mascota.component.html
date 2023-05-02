@@ -1,1 +1,29 @@
-<p>detail-especie-mascota works!</p>
+<div class="card w-25 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Detalle</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <mat-card-subtitle>ID: {{especie_mascota.idEspecieMascota}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Nombre: {{especie_mascota.nombreEspecieMascota}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Descripción: {{especie_mascota.descripcionEspecieMascota}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Estado: {{especie_mascota.estado ? "Activo" : "Inactivo"}}</mat-card-subtitle>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" routerLink="/especie/listar">Volver</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

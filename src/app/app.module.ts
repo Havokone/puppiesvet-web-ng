@@ -53,6 +53,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -113,6 +116,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatTooltipModule,
+    MatCardModule,
+    MatDatepickerModule,
 
     FormsModule,
     ReactiveFormsModule,

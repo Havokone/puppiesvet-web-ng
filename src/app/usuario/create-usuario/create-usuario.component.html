@@ -1,104 +1,109 @@
-<div class="card text-white w-75 mx-auto">
-  <div class="card-header">Registro</div>
-  <div class="card-body">
-    <form (ngSubmit)="guardar()" [formGroup]="usuarioForm">
-      <div class="row col-12">
-        <div class="col-3">
-          <mat-form-field class="example-full-width" style="width: 100%;">
-            <mat-label>Nombres</mat-label>
-            <input type="text" matInput formControlName="nombreUsuario" maxlength="40"
-                   placeholder="Ingrese los nombres" >
-            <mat-error *ngIf="handleError('nombreUsuario', 'required')">
-              Nombres del usuario son requeridos
-            </mat-error>
-          </mat-form-field>
+<div class="card w-75 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Registro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="guardar()" [formGroup]="usuarioForm">
+        <div class="row col-12">
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Nombres</mat-label>
+              <input type="text" matInput formControlName="nombreUsuario" maxlength="40"
+                     placeholder="Ingrese los nombres" >
+              <mat-error *ngIf="handleError('nombreUsuario', 'required')">
+                Nombres del usuario son requeridos
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="emailUsuario" maxlength="30"
+                     placeholder="Ingrese el email" >
+              <mat-error *ngIf="handleError('emailUsuario', 'required')">
+                Email del usuario es requerido
+              </mat-error>
+              <mat-error *ngIf="handleError('emailUsuario', 'email')">
+                Email del usuario no es válido
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>DNI</mat-label>
+              <input type="text" matInput formControlName="dniUsuario" maxlength="8" minlength="8"
+                     placeholder="Ingrese el DNI" >
+              <mat-error *ngIf="handleError('dniUsuario', 'required')">
+                DNI del usuario es requerido
+              </mat-error>
+              <mat-error *ngIf="handleError('dniUsuario', 'minlength')">
+                DNI del usuario requiere de 8 digitos
+              </mat-error>
+              <mat-error *ngIf="handleError('dniUsuario', 'pattern')">
+                DNI del usuario solo requiere números
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Contraseña</mat-label>
+              <input type="password" matInput formControlName="password" maxlength="20"
+                     placeholder="Ingrese la contraseña">
+              <mat-error *ngIf="handleError('password', 'required')">
+                Contraseña es requerida
+              </mat-error>
+            </mat-form-field>
+          </div>
         </div>
-        <div class="col-3">
-          <mat-form-field class="example-full-width" style="width: 100%;">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput formControlName="emailUsuario" maxlength="30"
-                   placeholder="Ingrese el email" >
-            <mat-error *ngIf="handleError('emailUsuario', 'required')">
-              Email del usuario es requerido
-            </mat-error>
-            <mat-error *ngIf="handleError('emailUsuario', 'email')">
-              Email del usuario no es válido
-            </mat-error>
-          </mat-form-field>
+        <div class="row col-12">
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Celular</mat-label>
+              <input type="text" matInput formControlName="celularUsuario" maxlength="9" minlength="9"
+                     placeholder="Ingrese el celular" >
+              <mat-error *ngIf="handleError('celularUsuario', 'required')">
+                Celular del usuario es requerido
+              </mat-error>
+              <mat-error *ngIf="handleError('celularUsuario', 'minlength')">
+                Celular del usuario requiere de 9 digitos
+              </mat-error>
+              <mat-error *ngIf="handleError('celularUsuario', 'pattern')">
+                Celular del usuario solo requiere números
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Dirección</mat-label>
+              <input type="text" matInput formControlName="direccionUsuario" maxlength="100"
+                     placeholder="Ingrese la dirección">
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Rol</mat-label>
+              <mat-select formControlName="rol">
+                <mat-option *ngFor="let rol of roles" [value]="rol.value">
+                  {{rol.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-slide-toggle formControlName="estado" style="padding: 20px 0px 20px 0px;">Activo</mat-slide-toggle>
+          </div>
         </div>
-        <div class="col-3">
-          <mat-form-field class="example-full-width" style="width: 100%;">
-            <mat-label>DNI</mat-label>
-            <input type="text" matInput formControlName="dniUsuario" maxlength="8" minlength="8"
-                   placeholder="Ingrese el DNI" >
-            <mat-error *ngIf="handleError('dniUsuario', 'required')">
-              DNI del usuario es requerido
-            </mat-error>
-            <mat-error *ngIf="handleError('dniUsuario', 'minlength')">
-              DNI del usuario requiere de 8 digitos
-            </mat-error>
-            <mat-error *ngIf="handleError('dniUsuario', 'pattern')">
-              DNI del usuario solo requiere números
-            </mat-error>
-          </mat-form-field>
+        <div class="row col-12">
+          <div class="col-1">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!usuarioForm.valid">Guardar</button>
+          </div>
+          <div class="col-1">
+            <button mat-raised-button color="warn" routerLink="/usuario/listar">Cancelar</button>
+          </div>
         </div>
-        <div class="col-3">
-          <mat-form-field class="example-full-width" style="width: 100%;">
-            <mat-label>Contraseña</mat-label>
-            <input type="password" matInput formControlName="password" maxlength="20"
-                   placeholder="Ingrese la contraseña">
-            <mat-error *ngIf="handleError('password', 'required')">
-              Contraseña es requerida
-            </mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-      <div class="row col-12">
-        <div class="col-3">
-          <mat-form-field class="example-full-width" style="width: 100%;">
-            <mat-label>Celular</mat-label>
-            <input type="text" matInput formControlName="celularUsuario" maxlength="9" minlength="9"
-                   placeholder="Ingrese el celular" >
-            <mat-error *ngIf="handleError('celularUsuario', 'required')">
-              Celular del usuario es requerido
-            </mat-error>
-            <mat-error *ngIf="handleError('celularUsuario', 'minlength')">
-              Celular del usuario requiere de 9 digitos
-            </mat-error>
-            <mat-error *ngIf="handleError('celularUsuario', 'pattern')">
-              Celular del usuario solo requiere números
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col-3">
-          <mat-form-field class="example-full-width" style="width: 100%;">
-            <mat-label>Dirección</mat-label>
-            <input type="text" matInput formControlName="direccionUsuario" maxlength="100"
-                   placeholder="Ingrese la dirección">
-          </mat-form-field>
-        </div>
-        <div class="col-3">
-          <mat-form-field appearance="fill" style="width: 100%;">
-            <mat-label>Rol</mat-label>
-            <mat-select formControlName="rol">
-              <mat-option *ngFor="let rol of roles" [value]="rol.value">
-                {{rol.label}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="col-3">
-          <mat-slide-toggle formControlName="estado" style="padding: 20px 0px 20px 0px;">Activo</mat-slide-toggle>
-        </div>
-      </div>
-      <div class="row col-12">
-        <div class="col-1">
-          <button type="submit" mat-raised-button color="primary" [disabled]="!usuarioForm.valid">Guardar</button>
-        </div>
-        <div class="col-1">
-          <button mat-raised-button color="warn" routerLink="/usuario/listar">Cancelar</button>
-        </div>
-      </div>
-    </form>
-  </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
+

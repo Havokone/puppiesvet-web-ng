@@ -1,1 +1,45 @@
-<p>detail-usuario works!</p>
+<div class="card w-25 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Detalle</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <mat-card-subtitle>ID: {{usuario.idUsuario}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Nombres: {{usuario.nombreUsuario}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>DNI: {{usuario.dniUsuario}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>E-mail: {{usuario.emailUsuario}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Celular: {{usuario.celularUsuario}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Dirección: {{usuario.direccionUsuario}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Rol: {{usuario.rol=="A"? "Administrador" : "Cliente"}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Estado: {{usuario.estado ? "Activo" : "Inactivo"}}</mat-card-subtitle>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" routerLink="/usuario/listar">Volver</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

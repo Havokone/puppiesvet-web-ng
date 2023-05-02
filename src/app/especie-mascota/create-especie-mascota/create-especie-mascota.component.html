@@ -1,1 +1,45 @@
-<p>create-especie-mascota works!</p>
+<div class="card w-75 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Registro</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="guardar()" [formGroup]="especieMascotaForm">
+        <div class="row col-12">
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Nombre</mat-label>
+              <input type="text" matInput formControlName="nombreEspecieMascota" maxlength="40"
+                     placeholder="Ingrese el nombre" >
+              <mat-error *ngIf="handleError('nombreEspecieMascota', 'required')">
+                Nombre de la especie es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Descripción</mat-label>
+              <textarea type="text" matInput formControlName="descripcionEspecieMascota" maxlength="200"
+                     placeholder="Ingrese la descripción" ></textarea>
+              <mat-error *ngIf="handleError('descripcionEspecieMascota', 'required')">
+                Descripción de la especie es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col-3">
+            <mat-slide-toggle formControlName="estado" style="padding: 20px 0px 20px 0px;">Activo</mat-slide-toggle>
+          </div>
+        </div>
+        <div class="row col-12">
+          <div class="col-1">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!especieMascotaForm.valid">Guardar</button>
+          </div>
+          <div class="col-1">
+            <button mat-raised-button color="warn" routerLink="/especie/listar">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

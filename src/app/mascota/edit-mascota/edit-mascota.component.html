@@ -1,1 +1,129 @@
-<p>edit-mascota works!</p>
+<div class="card w-75 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Edición</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="actualizar()" [formGroup]="mascotaForm">
+        <div class="row col-12">
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Nombre</mat-label>
+              <input type="text" matInput formControlName="nombreMascota" maxlength="40"
+                     placeholder="Ingrese el nombre" >
+              <mat-error *ngIf="handleError('nombreMascota', 'required')">
+                Nombres de la mascota es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Peso</mat-label>
+              <input type="number" matInput formControlName="pesoMascota" min="1"
+                     placeholder="Ingrese el peso (gr)" >
+              <mat-error *ngIf="handleError('pesoMascota', 'required')">
+                Peso de la mascota es requerido
+              </mat-error>
+              <mat-error *ngIf="handleError('pesoMascota', 'min')">
+                Peso de la mascota debe ser un valor mayor a 0
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Tamaño</mat-label>
+              <input type="number" matInput formControlName="tamanoMascota" min="1"
+                     placeholder="Ingrese el tamaño (alto en cm)" >
+              <mat-error *ngIf="handleError('tamanoMascota', 'required')">
+                Tamaño de la mascota es requerido
+              </mat-error>
+              <mat-error *ngIf="handleError('tamanoMascota', 'min')">
+                Tamaño de la mascota debe ser un valor mayor a 0
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Sexo</mat-label>
+              <mat-select formControlName="sexoMascota">
+                <mat-option [value]="">
+                  --Seleccione--
+                </mat-option>
+                <mat-option *ngFor="let sexo of sexos" [value]="sexo.value">
+                  {{sexo.label}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="handleError('sexoMascota', 'required')">
+                Sexo es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="fechaNacimientoMascota"
+                    placeholder="Ingrese la fecha de nacimiento">
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+
+              <mat-error *ngIf="handleError('fechaNacimientoMascota', 'required')">
+                Fecha de nacimiento de la mascota es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Especie</mat-label>
+              <mat-select formControlName="especieMascota" (valueChange)="onChangeRaza($event)">
+                <mat-option [value]="">
+                  --Seleccione--
+                </mat-option>
+                <mat-option *ngFor="let especie of especies" [value]="especie.idEspecieMascota">
+                  {{especie.nombreEspecieMascota}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="handleError('especieMascota', 'required')">
+                Especie es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Raza</mat-label>
+              <mat-select formControlName="razaMascota">
+                <mat-option [value]="">
+                  --Seleccione--
+                </mat-option>
+                <mat-option *ngFor="let raza of razas" [value]="raza.idRazaMascota">
+                  {{raza.nombreRazaMascota}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="handleError('razaMascota', 'required')">
+                Especie es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-slide-toggle formControlName="estado" style="padding: 20px 0px 20px 0px;">Activo</mat-slide-toggle>
+          </div>
+        </div>
+        <div class="row col-12">
+          <div class="col-1">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!mascotaForm.valid">Guardar</button>
+          </div>
+          <div class="col-1">
+            <button mat-raised-button color="warn" routerLink="/mascota/listar">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

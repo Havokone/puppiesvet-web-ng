@@ -32,13 +32,13 @@
           </mat-form-field>
         </div>
 
-        <div class="row col-12">
+        <div class="row">
           <button type="submit" mat-raised-button color="primary" [disabled]="!usuarioForm.valid">Acceder</button>
         </div>
-        <div class="row col-12" *ngIf="msgLogin != null" style="margin:5px;color:red;font-weight:bold;">
+        <div class="row" *ngIf="msgLogin != null" style="margin:5px;color:red;font-weight:bold;text-align: center;">
           <mat-label>{{msgLogin}}</mat-label>
         </div>
-        <div class="row col-12">
+        <div class="row">
           <button type="submit" mat-raised-button color="warn" routerLink="/usuario/registrar">¿No se encuentra registrado? Cree una cuenta</button>
         </div>
       </form>

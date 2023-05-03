@@ -1,1 +1,67 @@
-<p>detail-orden works!</p>
+<div class="card w-25 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Detalle</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <mat-card-subtitle>ID: {{orden.idOrden}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider *ngIf="isCliente"></mat-divider>
+        <mat-list-item *ngIf="isCliente">
+          <mat-card-subtitle>Nota para el veterinario: {{orden.notaOrdenCliente}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider *ngIf="!isCliente"></mat-divider>
+        <mat-list-item *ngIf="!isCliente">
+          <mat-card-subtitle>Nota del veterinario: {{orden.notaOrdenMedico}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider *ngIf="!isCliente"></mat-divider>
+        <mat-list-item *ngIf="!isCliente">
+          <mat-card-subtitle>Costo: S/. {{orden.costoOrden}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Fecha y hora de la Orden: {{orden.fechaOrden | date:"dd-MM-YYYY h:mm a"}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Servicio: {{orden.servicio!=undefined ? orden.servicio.nombreServicio : ""}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Mascota: {{orden.mascota!=undefined ?
+                                          orden.mascota.nombreMascota +
+                                          (orden.mascota.razaMascota!=undefined ?
+                                            " (Raza: " +
+                                            orden.mascota.razaMascota.nombreRazaMascota +
+                                            (orden.mascota.razaMascota.especieMascota!=undefined ?
+                                              " - Especie: "+
+                                              orden.mascota.razaMascota.especieMascota.nombreEspecieMascota :
+                                              "") + ")" :
+                                            "") :
+                                          ""}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider *ngIf="!isCliente"></mat-divider>
+        <mat-list-item *ngIf="!isCliente">
+          <mat-card-subtitle>Cliente: {{orden.mascota!=undefined ?
+                                          (orden.mascota.usuario!=undefined ?
+                                            orden.mascota.usuario.nombreUsuario :
+                                            "") :
+                                          ""}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider *ngIf="isCliente"></mat-divider>
+        <mat-list-item *ngIf="isCliente">
+          <mat-card-subtitle>Veterinario: {{orden.usuario!=undefined ? orden.usuario.nombreUsuario : ""}}</mat-card-subtitle>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+          <mat-card-subtitle>Estado: {{orden.estado ? "Activo" : "Inactivo"}}</mat-card-subtitle>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="warn" routerLink="/orden/listar">Volver</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

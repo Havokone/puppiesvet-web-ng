@@ -15,8 +15,33 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   getUsuarioList(): Observable<any> {
-
     return this.http.get(this.urlBase+"/usuario").pipe(
+      map(response => response as Usuario[]),
+      catchError(e => {
+        alert(e.status+":"+e.error.message)
+        return throwError( () => {
+          const error: any = new Error(e.error.message);
+          error.timestamp = Date.now();
+          return error;
+        });
+      })
+    );
+  }
+  getUsuarioActiveByRolList(rol:string): Observable<any> {
+    return this.http.get(this.urlBase+"/usuario/rol/"+rol).pipe(
+      map(response => response as Usuario[]),
+      catchError(e => {
+        alert(e.status+":"+e.error.message)
+        return throwError( () => {
+          const error: any = new Error(e.error.message);
+          error.timestamp = Date.now();
+          return error;
+        });
+      })
+    );
+  }
+  getUsuarioActiveList(): Observable<any> {
+    return this.http.get(this.urlBase+"/usuario_active").pipe(
       map(response => response as Usuario[]),
       catchError(e => {
         alert(e.status+":"+e.error.message)

@@ -1,53 +1,68 @@
 
 <mat-sidenav-container style="height:100%">
-  <mat-sidenav #sidenav [mode]="mode.value || 'over'">
+  <mat-sidenav #sidenav [mode]="mode.value || 'over'" style="min-width: 10vw;">
 
     <mat-list>
-      <mat-list-item style="vertical-align: middle;text-align: center;">
-        <button mat-button (click)="sidenav.toggle()">
-          <mat-icon>close</mat-icon>Cerrar
-        </button>
+      <mat-list-item *ngIf="sessionExists">
+        <a routerLink="/home" (click)="sidenav.toggle()" color="primary" style="display: inline-flex;text-decoration: none;">
+          <span class="material-icons" style="margin:5px 5px 0 10px">account_circle</span>
+          <h3 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">{{nombreUsuario}}</h3>
+        </a>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
+      <mat-divider *ngIf="sessionExists"></mat-divider>
+      <mat-list-item *ngIf="!sessionExists">
+        <a routerLink="/login" (click)="sidenav.toggle()" color="primary" style="display: inline-flex;text-decoration: none;">
+          <span class="material-icons" style="margin:5px 5px 0 10px">login</span>
+          <h2 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">Log In</h2>
+        </a>
+      </mat-list-item>
+      <mat-divider *ngIf="sessionExists && !isCliente"></mat-divider>
+      <mat-list-item *ngIf="sessionExists && !isCliente">
         <a routerLink="/usuario/listar" (click)="sidenav.toggle()" color="primary" style="display: inline-flex;text-decoration: none;">
           <span class="material-icons" style="margin:5px 5px 0 10px">group</span>
           <h2 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">Usuarios</h2>
         </a>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
+      <mat-divider *ngIf="sessionExists && !isCliente"></mat-divider>
+      <mat-list-item *ngIf="sessionExists && !isCliente">
         <a routerLink="/servicio/listar" (click)="sidenav.toggle()" color="primary" style="display: inline-flex;text-decoration: none;">
           <span class="material-icons" style="margin:5px 5px 0 10px">medical_services</span>
           <h2 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">Servicios</h2>
         </a>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
+      <mat-divider *ngIf="sessionExists && !isCliente"></mat-divider>
+      <mat-list-item *ngIf="sessionExists && !isCliente">
         <a routerLink="/especie/listar" (click)="sidenav.toggle()" color="primary" style="display: inline-flex;text-decoration: none;">
           <span class="material-icons" style="margin:5px 5px 0 10px">pets</span>
           <h2 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">Especies</h2>
         </a>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
+      <mat-divider *ngIf="sessionExists && !isCliente"></mat-divider>
+      <mat-list-item *ngIf="sessionExists && !isCliente">
         <a routerLink="/raza/listar" (click)="sidenav.toggle()" color="primary" style="display: inline-flex;text-decoration: none;">
           <span class="material-icons" style="margin:5px 5px 0 10px">pets</span>
           <h2 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">Razas</h2>
         </a>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
+      <mat-divider *ngIf="sessionExists && isCliente"></mat-divider>
+      <mat-list-item *ngIf="sessionExists && isCliente">
         <a routerLink="/mascota/listar" (click)="sidenav.toggle()" color="primary" style="display: inline-flex;text-decoration: none;">
           <span class="material-icons" style="margin:5px 5px 0 10px">pets</span>
           <h2 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">Mascotas</h2>
         </a>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
+      <mat-divider *ngIf="sessionExists"></mat-divider>
+      <mat-list-item *ngIf="sessionExists">
         <a routerLink="/orden/listar" (click)="sidenav.toggle()" color="primary" style="display: inline-flex;text-decoration: none;">
           <span class="material-icons" style="margin:5px 5px 0 10px">list_alt</span>
           <h2 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">Orden</h2>
+        </a>
+      </mat-list-item>
+      <mat-divider *ngIf="sessionExists"></mat-divider>
+      <mat-list-item *ngIf="sessionExists">
+        <a routerLink="/index" (click)="sidenav.toggle();cerrarSesion()" color="primary" style="display: inline-flex;text-decoration: none;">
+          <span class="material-icons" style="margin:5px 5px 0 10px">logout</span>
+          <h2 style="margin: 3px 5px 10px 5px;padding: 0px 5px 0px 5px;">Salir</h2>
         </a>
       </mat-list-item>
     </mat-list>

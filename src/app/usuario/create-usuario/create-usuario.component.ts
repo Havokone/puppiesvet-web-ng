@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '@service/usuario.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Usuario } from '@models/usuario';
 
 interface Rol{
   value:String;
@@ -17,6 +18,8 @@ interface Rol{
 export class CreateUsuarioComponent implements OnInit {
 
   usuarioForm:FormGroup;
+  isAdministrador:boolean = sessionStorage.getItem('rol') !=undefined && sessionStorage.getItem('rol') !=null ? sessionStorage.getItem('rol')=="A": false;
+  isCliente:boolean = sessionStorage.getItem('rol') !=undefined && sessionStorage.getItem('rol') !=null ? sessionStorage.getItem('rol')=="C": false;
   roles: Rol[] = [{value: 'A',label:'Administrador'}, {value: 'C',label:'Cliente'}]
 
   constructor(public formBuilder: FormBuilder,
@@ -24,6 +27,11 @@ export class CreateUsuarioComponent implements OnInit {
               private router: Router){}
 
   ngOnInit(): void {
+
+    if(this.isCliente) {
+      this.router.navigate(['home']);
+    }
+
     this.usuarioForm = this.formBuilder.group({
       nombreUsuario: ['',[Validators.required]],
       emailUsuario: ['',[Validators.required,
@@ -38,13 +46,27 @@ export class CreateUsuarioComponent implements OnInit {
                         Validators.pattern("^[0-9]*$")]],
       direccionUsuario: ['',[]],
       password: ['',[Validators.required]],
-      rol: ['A'],
+      rol: [{value:this.isAdministrador ? 'A' : 'C',disabled:!this.isAdministrador}],
       estado: [{value:true,disabled:true}]
     })
    }
 
   guardar(){
-    this.usuarioService.createUsuario(this.usuarioForm.value).subscribe(data => {this.router.navigate(['usuario/listar'])})
+    if(!this.isAdministrador){
+      this.usuarioForm.value["rol"] = "C"
+    }
+    this.usuarioService.createUsuario(this.usuarioForm.value).subscribe(
+      data => {
+        console.log(data)
+        if(this.isAdministrador){
+          this.router.navigate(['usuario/listar'])
+        } else{
+          sessionStorage.setItem('idUsuario',+(data as Usuario)["idUsuario"]+"");
+          sessionStorage.setItem('nombreUsuario',(data as Usuario)["nombreUsuario"]);
+          sessionStorage.setItem('rol',(data as Usuario)["rol"]);
+          window.location.href = '/home';
+        }
+      })
   }
 
   public handleError = (controlName: string, errorName: string) => {

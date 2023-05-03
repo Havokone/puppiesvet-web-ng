@@ -7,9 +7,9 @@ export class Orden {
   notaOrdenCliente?:string;
   notaOrdenMedico?: string;
   costoOrden?:      number;
-  fechaOrden?:      Date;
+  fechaOrden:       Date;
   estado:           boolean;
-  mascota?:         Mascota;
-  servicio?:        Servicio;
-  usuario?:         Usuario;
+  mascota:          Mascota;
+  servicio:         Servicio;
+  usuario:          Usuario;
 }

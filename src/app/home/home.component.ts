@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-
+  nombreUsuario:any
+  rolUsuario:any
+  constructor(){
+    this.nombreUsuario = sessionStorage.getItem('nombreUsuario');
+    this.rolUsuario = sessionStorage.getItem('rol');
+  }
 }

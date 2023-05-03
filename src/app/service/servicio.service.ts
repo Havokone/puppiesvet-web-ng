@@ -13,6 +13,19 @@ export class ServicioService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
+  getServicioActiveList(): Observable<any> {
+    return this.http.get(this.urlBase+"/servicio_active").pipe(
+      map(response => response as Servicio[]),
+      catchError(e => {
+        alert(e.status+":"+e.error.message)
+        return throwError( () => {
+          const error: any = new Error(e.error.message);
+          error.timestamp = Date.now();
+          return error;
+        });
+      })
+    );
+  }
   getServicioList(): Observable<any> {
     return this.http.get(this.urlBase+"/servicio").pipe(
       map(response => response as Servicio[]),

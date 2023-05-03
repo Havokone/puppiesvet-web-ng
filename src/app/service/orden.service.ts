@@ -26,6 +26,35 @@ export class OrdenService {
       })
     );
   }
+
+  getOrdenActiveByClienteList(codigo:number): Observable<any> {
+    return this.http.get(this.urlBase+"/orden/cliente/"+codigo).pipe(
+      map(response => response as Orden[]),
+      catchError(e => {
+        alert(e.status+":"+e.error.message)
+        return throwError( () => {
+          const error: any = new Error(e.error.message);
+          error.timestamp = Date.now();
+          return error;
+        });
+      })
+    );
+  }
+
+  getOrdenActiveByAdminList(codigo:number): Observable<any> {
+    return this.http.get(this.urlBase+"/orden/admin/"+codigo).pipe(
+      map(response => response as Orden[]),
+      catchError(e => {
+        alert(e.status+":"+e.error.message)
+        return throwError( () => {
+          const error: any = new Error(e.error.message);
+          error.timestamp = Date.now();
+          return error;
+        });
+      })
+    );
+  }
+
   createOrden(orden: Object): Observable<Object>{
     return this.http.post(this.urlBase+"/orden", orden,{headers: this.httpHeaders});
   }

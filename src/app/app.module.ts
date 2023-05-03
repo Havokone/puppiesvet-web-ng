@@ -56,9 +56,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule,
+  NGX_MAT_DATE_FORMATS
+} from '@angular-material-components/datetime-picker';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -96,7 +107,8 @@ import { HttpClientModule } from '@angular/common/http';
 
     PageNotFoundComponent,
     HomeComponent,
-    IndexComponent
+    IndexComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -119,6 +131,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatTooltipModule,
     MatCardModule,
     MatDatepickerModule,
+    MatTabsModule,
+    MatGridListModule,
+
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
 
     FormsModule,
     ReactiveFormsModule,

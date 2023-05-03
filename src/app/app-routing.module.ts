@@ -33,6 +33,7 @@ import { EditOrdenComponent } from './orden/edit-orden/edit-orden.component';
 
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { IndexComponent } from './index/index.component';
 /*
 Index es para la página principal
@@ -41,6 +42,7 @@ Home es para la página de usuarios
 const routes: Routes = [
   {path:"home", component: HomeComponent},
   {path:"index", component: IndexComponent},
+  {path:"login", component: LoginComponent},
   {path:"", redirectTo: "/index", pathMatch: "full"},
 
   {path:"usuario/listar", component: ListUsuarioComponent},

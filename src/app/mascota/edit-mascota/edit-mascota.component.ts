@@ -20,7 +20,7 @@ interface Sexo{
   styleUrls: ['./edit-mascota.component.css']
 })
 export class EditMascotaComponent implements OnInit {
-  id:number = 2;
+  id_cliente:number = 0;
   mascota:Mascota = new Mascota();
   mascotaForm:FormGroup;
   especies: EspecieMascota[];
@@ -33,6 +33,7 @@ export class EditMascotaComponent implements OnInit {
               private mascotaService: MascotaService,
               private activeRoute: ActivatedRoute,
               private router: Router){
+    this.id_cliente = sessionStorage.getItem('idUsuario') !=undefined && sessionStorage.getItem('idUsuario') !=null ? Number(sessionStorage.getItem('idUsuario')): 0
     const id = this.activeRoute.snapshot.params["codigo"];
     this.mascotaService.getMascota(id).subscribe(data => {
       this.mascota = data;
@@ -81,7 +82,7 @@ export class EditMascotaComponent implements OnInit {
     this.mascota.razaMascota = new RazaMascota()
     this.mascota.razaMascota.idRazaMascota = this.mascotaForm.value["razaMascota"]
     this.mascota.usuario = new Usuario()
-    this.mascota.usuario.idUsuario = this.id
+    this.mascota.usuario.idUsuario = this.id_cliente
     this.mascota.estado = this.mascotaForm.value["estado"]
     this.mascotaService.updateMascota(this.mascota.idMascota,this.mascota).subscribe(
       data => {this.router.navigate(['mascota/listar'])})

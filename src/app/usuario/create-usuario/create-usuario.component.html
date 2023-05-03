@@ -99,7 +99,8 @@
             <button type="submit" mat-raised-button color="primary" [disabled]="!usuarioForm.valid">Guardar</button>
           </div>
           <div class="col-1">
-            <button mat-raised-button color="warn" routerLink="/usuario/listar">Cancelar</button>
+            <button mat-raised-button color="warn" *ngIf="isAdministrador" routerLink="/usuario/listar">Cancelar</button>
+            <button mat-raised-button color="warn" *ngIf="!isAdministrador" routerLink="/login">Cancelar</button>
           </div>
         </div>
       </form>

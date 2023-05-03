@@ -20,7 +20,7 @@ interface Sexo{
   styleUrls: ['./create-mascota.component.css']
 })
 export class CreateMascotaComponent implements OnInit {
-  id:number = 2;
+  id:number = 0;
   mascota:Mascota = new Mascota();
   mascotaForm:FormGroup;
   especies: EspecieMascota[];
@@ -34,6 +34,7 @@ export class CreateMascotaComponent implements OnInit {
               private router: Router){}
 
   ngOnInit(): void {
+    this.id = sessionStorage.getItem('idUsuario') !=undefined && sessionStorage.getItem('idUsuario') !=null ? Number(sessionStorage.getItem('idUsuario')): 0
     this.mascotaForm = this.formBuilder.group({
       nombreMascota: ['',[Validators.required]],
       pesoMascota: ['',[Validators.required,Validators.min]],

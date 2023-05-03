@@ -1,1 +1,59 @@
-<p>index works!</p>
+<div class="card w-75 mx-auto" style="margin-top:20px;">
+ <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+  <mat-tab label="Nosotros">
+   <mat-grid-list cols="2" rowHeight="2:1" style="margin:20px;">
+    <mat-grid-tile>
+     <a href="https://imgbb.com/"><img src="https://i.ibb.co/y8YmrhY/logo.png" alt="logo" border="0"></a>
+    </mat-grid-tile>
+    <mat-grid-tile>
+     <mat-label>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</mat-label>
+    </mat-grid-tile>
+   </mat-grid-list>
+
+  </mat-tab>
+  <mat-tab label="Servicios">
+    <mat-grid-list cols="3" rowHeight="2:1" style="margin:20px;">
+      <mat-grid-tile *ngFor="let servicio of servicios">
+
+        <mat-card style="width:100%;margin: 20px;">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{servicio.nombreServicio}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://i.ibb.co/mXgnszx/alba-1-1621849741.webp" style="width: 180px;margin-left: 200px;margin-right: 200px;margin-top: 10px;margin-bottom: 10px;">
+          <mat-card-content>
+            <p>
+              {{servicio.descripcionServicio}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+  <mat-tab label="Ubicanos">
+    <mat-grid-list cols="2" rowHeight="2:1" style="margin:20px;">
+      <mat-grid-tile>
+        <mat-card style="width:100%;margin: 20px;">
+          <mat-card-header>
+            <mat-card-title>Av. Alberto alexander 2294, Lince</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <img mat-card-image src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg" style="width: 80%;margin-left: 100px;margin-right: 100px;margin-top: 10px;margin-bottom: 10px;">
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card style="width:100%;margin: 20px;">
+          <mat-card-header>
+            <mat-card-title>Av. Paseo de la República 668, Lima</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <img mat-card-image src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg" style="width: 80%;margin-left: 100px;margin-right: 100px;margin-top: 10px;margin-bottom: 10px;">
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </mat-tab>
+ </mat-tab-group>
+</div>
+

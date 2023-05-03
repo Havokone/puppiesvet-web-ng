@@ -1,1 +1,127 @@
-<p>edit-orden works!</p>
+<div class="card w-75 mx-auto" style="margin-top:20px;">
+  <mat-card>
+    <mat-card-header style="margin-bottom: 20px;">
+      <mat-card-title>Edición</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="actualizar()" [formGroup]="ordenForm">
+        <div class="row col-12">
+
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Fecha de la Orden</mat-label>
+              <input matInput [ngxMatDatetimePicker]="picker" formControlName="fechaOrden" [min]="minDate"
+                    placeholder="Ingrese la fecha de la orden">
+              <mat-datepicker-toggle matIconSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+              <ngx-mat-datetime-picker #picker [enableMeridian]="true"></ngx-mat-datetime-picker>
+
+              <mat-error *ngIf="handleError('fechaOrden', 'required')">
+                Fecha de la orden es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Servicio</mat-label>
+              <mat-select formControlName="servicio">
+                <mat-option [value]="">
+                  --Seleccione--
+                </mat-option>
+                <mat-option *ngFor="let servicio of servicios" [value]="servicio.idServicio">
+                  {{servicio.nombreServicio}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="handleError('servicio', 'required')">
+                Servicio es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Mascota</mat-label>
+              <mat-select formControlName="mascota">
+                <mat-option [value]="">
+                  --Seleccione--
+                </mat-option>
+                <mat-option *ngFor="let mascota of mascotas" [value]="mascota.idMascota">
+                  {{mascota.nombreMascota}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="handleError('mascota', 'required')">
+                Mascota es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Veterinario</mat-label>
+              <mat-select formControlName="usuario">
+                <mat-option [value]="">
+                  --Seleccione--
+                </mat-option>
+                <mat-option *ngFor="let veterinario of veterinarios" [value]="veterinario.idUsuario">
+                  {{veterinario.nombreUsuario}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="handleError('usuario', 'required')">
+                Veterinario es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Nota para el veterinario</mat-label>
+              <textarea type="text" matInput formControlName="notaOrdenCliente" maxlength="200"
+                     placeholder="Ingrese la nota para el veterinario" ></textarea>
+              <mat-error *ngIf="handleError('notaOrdenCliente', 'required')">
+                Nota para el veterinario es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3" *ngIf="!isCliente">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Nota del Veterinario</mat-label>
+              <textarea type="text" matInput formControlName="notaOrdenMedico" maxlength="200"
+                     placeholder="Ingrese la nota del veterinario" ></textarea>
+              <mat-error *ngIf="handleError('notaOrdenMedico', 'required') || !isCliente">
+                Nota del veterinario es requerido
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3" *ngIf="!isCliente">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+              <mat-label>Costo</mat-label>
+              <input type="number" matInput formControlName="costoOrden" min="0"
+                     placeholder="Ingrese el costo del servicio" >
+              <mat-error *ngIf="handleError('costoOrden', 'required') || !isCliente">
+                Costo es requerido
+              </mat-error>
+              <mat-error *ngIf="handleError('costoOrden', 'min') || !isCliente">
+                Costo debe ser un valor mayor a 0
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="col-3">
+            <mat-slide-toggle formControlName="estado" style="padding: 20px 0px 20px 0px;">Activo</mat-slide-toggle>
+          </div>
+        </div>
+        <div class="row col-12">
+          <div class="col-1">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!ordenForm.valid">Guardar</button>
+          </div>
+          <div class="col-1">
+            <button mat-raised-button color="warn" routerLink="/orden/listar">Cancelar</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+

@@ -11,7 +11,7 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./list-mascota.component.css']
 })
 export class ListMascotaComponent implements OnInit,AfterViewInit {
-  id:number = 2;
+  id:number = 0;
   mascota: Mascota = new Mascota();
   displayedColumns = ["idMascota","nombreMascota","fechaNacimientoMascota",
                       "sexoMascota","razaMascota",
@@ -23,6 +23,7 @@ export class ListMascotaComponent implements OnInit,AfterViewInit {
   @ViewChild(MatSort) sort:MatSort;
 
   constructor(private mascotaService: MascotaService){
+    this.id = sessionStorage.getItem('idUsuario') !=undefined && sessionStorage.getItem('idUsuario') !=null ? Number(sessionStorage.getItem('idUsuario')): 0
     this.mascotaService.getMascotaByOwnerList(this.id).subscribe(
       mascotas => {this.dataSource.data = mascotas;});
   }
